@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+/* Sisanya biarkan saja (root dan scroll-behavior) */
+:root {
+  background-color: #0f172a;
+  color: #f1f5f9;
+}
+
+html {
+  scroll-behavior: smooth;
+}

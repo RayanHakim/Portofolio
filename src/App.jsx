@@ -1,10 +1,10 @@
 import React from 'react';
 
-// DATA CONFIGURATION 
 const portfolioData = {
   name: "Rayan Luqman Hakim",
   role: "Informatics Engineering",
   githubUrl: "https://github.com/RayanHakim",
+  cvUrl: "/Portofolio/CV Rayan Luqman Hakim.pdf",    
   
   projects: [
     {
@@ -16,7 +16,7 @@ const portfolioData = {
       repo: "https://github.com/RayanHakim/Skripsi-Analisis-Sentimen-Mobil-Listrik-Cina" 
     },
     {
-      title: "Web Portal Dinkominfostasandi",
+      title: "Website CMS Dinkominfostasandi",
       category: "FULLSTACK DEVELOPMENT",
       thumbnail: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop",
       desc: "Digitalisasi layanan informasi publik Kabupaten Purworejo. Mempermudah akses data birokrasi secara real-time melalui integrasi MySQL dan Flask API.",
@@ -32,18 +32,18 @@ const portfolioData = {
       repo: "https://github.com/RayanHakim/Project_Akhir_Mobile"
     },
     {
-      title: "QA Automation Testing Portal",
+      title: "QA Automation Testing Website Dinkominfostasandi",
       category: "QUALITY ASSURANCE",
       thumbnail: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop",
-      desc: "Pengujian otomatis end-to-end pada Web Portal Dinkominfostasandi. Mencakup UI Testing menggunakan Selenium, Unit Testing API dengan Pytest, serta simulasi Load Testing hingga 1000 Virtual Users menggunakan Locust.",
+      desc: "Pengujian otomatis end-to-end pada Website Dinkominfostasandi. Mencakup UI Testing menggunakan Selenium, Unit Testing API dengan Pytest, serta simulasi Load Testing hingga 1000 Virtual Users menggunakan Locust.",
       tech: ["Selenium", "Pytest", "Locust", "Python"],
       repo: "https://github.com/RayanHakim/Quality-Assurance-Kominfo"
     },
     {
-      title: "Pentest Web Portal Kominfo",
+      title: "Pentest Website Dinkominfostasandi",
       category: "CYBERSECURITY",
       thumbnail: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1200&auto=format&fit=crop",
-      desc: "Hasil pengujian keamanan (Penetration Testing) pada web portal pemerintahan. Menggabungkan automated scanning (OWASP ZAP) dan pengujian manual terhadap kerentanan Brute Force, XSS, serta SQL Injection.",
+      desc: "Hasil pengujian keamanan (Penetration Testing) pada website dinkominfostasandi. Menggabungkan automated scanning (OWASP ZAP) dan pengujian manual terhadap kerentanan Brute Force, XSS, serta SQL Injection.",
       tech: ["OWASP ZAP", "Python", "Security Testing"],
       repo: "https://github.com/RayanHakim/Pentest-Kominfo"
     }
@@ -54,7 +54,7 @@ const portfolioData = {
       role: "Fullstack Developer Intern",
       company: "Dinkominfostasandi Purworejo",
       duration: "Agustus 2025 - September 2025",
-      desc: "Mengembangkan portal web cms informasi publik, mengelola basis data MySQL, dan membantu digitalisasi layanan informasi daerah."
+      desc: "Mengembangkan website cms informasi publik, mengelola basis data MySQL, dan membantu digitalisasi layanan informasi daerah."
     }
   ],
 
@@ -83,8 +83,6 @@ const portfolioData = {
   ]
 };
 
-// COMPONENTS 
-
 const TechCard = ({ item }) => (
   <div className="flex items-center gap-4 sm:gap-6 bg-slate-900/40 border border-slate-800 p-4 sm:p-6 rounded-2xl hover:border-sky-500/50 hover:bg-slate-800/60 transition-all duration-300 group shadow-lg">
     <div className="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center p-2 bg-white/5 rounded-xl group-hover:bg-white/10 transition-colors shrink-0">
@@ -101,8 +99,6 @@ const TechCard = ({ item }) => (
 
 const BigProjectCard = ({ project }) => (
   <div className="group relative w-full bg-slate-900/20 border border-slate-800 rounded-3xl sm:rounded-[2.5rem] overflow-hidden hover:border-sky-500/40 transition-all duration-700 shadow-2xl flex flex-col lg:flex-row items-stretch">
-    
-    {/* Visual Side */}
     <div className="w-full lg:w-1/2 overflow-hidden h-64 sm:h-80 lg:h-auto relative shrink-0">
       <img 
         src={project.thumbnail} 
@@ -112,7 +108,6 @@ const BigProjectCard = ({ project }) => (
       <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent lg:hidden"></div>
     </div>
     
-    {/* Content Side */}
     <div className="w-full lg:w-1/2 p-6 sm:p-10 lg:p-14 flex flex-col justify-center bg-gradient-to-br from-slate-900/80 lg:from-slate-900/40 to-transparent relative z-10">
       <span className="text-sky-500 font-mono text-[10px] sm:text-xs tracking-[0.2em] sm:tracking-[0.4em] mb-3 sm:mb-4 uppercase">{project.category}</span>
       <h3 className="text-2xl sm:text-3xl lg:text-5xl font-black text-white mb-4 sm:mb-6 group-hover:text-sky-400 transition-colors leading-tight uppercase tracking-tighter">
@@ -134,13 +129,10 @@ const BigProjectCard = ({ project }) => (
   </div>
 );
 
-//  MAIN APP 
-
 export default function App() {
   return (
     <div className="bg-slate-950 text-slate-300 min-h-screen font-sans selection:bg-sky-500 selection:text-white overflow-x-hidden">
       
-      {/* HERO SECTION */}
       <section className="relative min-h-[100dvh] flex flex-col justify-center items-center px-4 sm:px-6 text-center pt-20 pb-10">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[500px] lg:w-[700px] h-[300px] sm:h-[500px] lg:h-[700px] bg-sky-600/10 blur-[100px] lg:blur-[150px] rounded-full pointer-events-none"></div>
         
@@ -155,16 +147,30 @@ export default function App() {
           <p className="text-slate-400 text-sm sm:text-lg lg:text-xl max-w-2xl mx-auto font-light leading-relaxed uppercase tracking-widest border-y border-slate-900 py-3 sm:py-4">
             {portfolioData.role}
           </p>
+          
           <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
-            <a href="#projects" className="w-full sm:w-auto bg-white text-black px-8 py-4 rounded-full font-black hover:bg-sky-500 hover:text-white transition-all transform hover:scale-105 shadow-2xl tracking-widest text-xs uppercase text-center">VIEW PROJECTS</a>
-            <a href={portfolioData.githubUrl} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto border border-slate-700 text-white px-8 py-4 rounded-full font-black hover:bg-slate-800 transition-all tracking-widest text-xs uppercase text-center">Github Profile</a>
+            <a href="#projects" className="w-full sm:w-auto bg-white text-black px-8 py-4 rounded-full font-black hover:bg-sky-500 hover:text-white transition-all transform hover:scale-105 shadow-2xl tracking-widest text-xs uppercase text-center">
+              VIEW PROJECTS
+            </a>
+            
+            <a 
+              href={portfolioData.cvUrl} 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto border-2 border-sky-500/50 text-white px-8 py-4 rounded-full font-black hover:bg-sky-500/10 hover:border-sky-400 transition-all tracking-widest text-xs uppercase text-center"
+            >
+              VIEW CV
+            </a>
+
+            <a href={portfolioData.githubUrl} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto border border-slate-700 text-white px-8 py-4 rounded-full font-black hover:bg-slate-800 transition-all tracking-widest text-xs uppercase text-center">
+              Github Profile
+            </a>
           </div>
         </div>
       </section>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-32 sm:space-y-48 pb-32 sm:pb-40">
         
-        {/* PROJECTS SECTION */}
         <section id="projects">
           <div className="flex flex-col items-center mb-16 sm:mb-24 text-center">
              <h2 className="text-4xl sm:text-5xl lg:text-7xl font-black text-white mb-4 sm:mb-6 uppercase italic tracking-tighter">Selected Works</h2>
@@ -191,7 +197,6 @@ export default function App() {
           </div>
         </section>
 
-        {/* EXPERIENCE SECTION */}
         <section id="experience" className="max-w-5xl mx-auto">
           <div className="mb-12 sm:mb-20 text-center sm:text-left">
             <h2 className="text-3xl sm:text-4xl font-black text-white mb-4 uppercase tracking-tighter italic">Experience</h2>
@@ -215,12 +220,10 @@ export default function App() {
           </div>
         </section>
 
-        {/* SKILLS & TOOLS SECTION */}
         <section id="skills" className="max-w-5xl mx-auto space-y-24 sm:space-y-32">
-          {/* Tech Stack */}
           <div>
             <div className="mb-8 sm:mb-12 flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
-              <h2 className="text-2xl sm:text-3xl font-black text-white tracking-widest uppercase text-center sm:text-left">Languange</h2>
+              <h2 className="text-2xl sm:text-3xl font-black text-white tracking-widest uppercase text-center sm:text-left">Language</h2>
               <div className="h-px bg-slate-800 w-full sm:flex-grow"></div>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
@@ -230,7 +233,6 @@ export default function App() {
             </div>
           </div>
 
-          {/* Tools */}
           <div>
             <div className="mb-8 sm:mb-12 flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
               <h2 className="text-2xl sm:text-3xl font-black text-white tracking-widest uppercase opacity-60 italic text-center sm:text-left">Tools</h2>
@@ -243,7 +245,6 @@ export default function App() {
             </div>
           </div>
 
-          {/* TOEFL Card */}
           <div className="bg-gradient-to-br from-indigo-950/40 to-slate-900/20 p-8 sm:p-16 rounded-3xl sm:rounded-[4rem] border border-sky-500/10 flex flex-col lg:flex-row items-center justify-between gap-8 sm:gap-10 shadow-2xl relative overflow-hidden group text-center lg:text-left">
               <div className="absolute top-0 right-0 w-32 h-32 bg-sky-500/5 blur-3xl rounded-full group-hover:bg-sky-500/10 transition-colors"></div>
               <div className="z-10">
@@ -257,10 +258,8 @@ export default function App() {
               </div>
           </div>
         </section>
-
       </div>
 
-      {/* FOOTER */}
       <footer className="py-16 sm:py-24 border-t border-slate-900 bg-slate-950 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="flex flex-col lg:flex-row justify-between items-center gap-10 sm:gap-12">
@@ -270,7 +269,7 @@ export default function App() {
             <div className="flex flex-wrap justify-center gap-6 sm:gap-10">
               <a href={portfolioData.githubUrl} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-all font-bold text-[10px] sm:text-xs tracking-widest uppercase border-b-2 border-transparent hover:border-sky-500 pb-1">Github</a>
               <a href="https://www.linkedin.com/in/rayan-luqman-hakim-ab8a81379/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-all font-bold text-[10px] sm:text-xs tracking-widest uppercase border-b-2 border-transparent hover:border-sky-500 pb-1">LinkedIn</a>
-              <a href="rayanluqmanhakim@gmail.com" className="text-slate-400 hover:text-white transition-all font-bold text-[10px] sm:text-xs tracking-widest uppercase border-b-2 border-transparent hover:border-sky-500 pb-1">Email</a>
+              <a href="mailto:rayanluqmanhakim@gmail.com" className="text-slate-400 hover:text-white transition-all font-bold text-[10px] sm:text-xs tracking-widest uppercase border-b-2 border-transparent hover:border-sky-500 pb-1">Email</a>
             </div>
           </div>
           <div className="mt-16 sm:mt-20 pt-8 sm:pt-10 border-t border-slate-900/50 flex flex-col md:flex-row justify-between items-center gap-4 sm:gap-6 text-center md:text-left">

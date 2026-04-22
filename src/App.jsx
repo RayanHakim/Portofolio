@@ -1,49 +1,49 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const portfolioData = {
   name: "Rayan Luqman Hakim",
   role: "Informatics Engineering",
   githubUrl: "https://github.com/RayanHakim",
-  cvUrl: "/Portofolio/CV Rayan Luqman Hakim.pdf",    
+  cvUrl: "/Portofolio/CV_Rayan Luqman Hakim.pdf",    
   
   projects: [
     {
       title: "Sentiment Analysis Dashboard",
-      category: "MACHINE LEARNING (NLP)",
+      category: "MACHINE LEARNING",
       thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
-      desc: "Aplikasi desktop (Tkinter) untuk analisis sentimen otomatis pada YouTube dan Instagram. Mengimplementasikan Hybrid Ensemble Model (Naive Bayes & Logistic Regression) dengan Soft Voting, serta vektorisasi TF-IDF dan Count Vectorizer.",
-      tech: ["Python", "Tkinter", "Scikit-Learn", "NLTK", "SMOTE"],
+      desc: "Aplikasi desktop (Tkinter) untuk analisis sentimen otomatis pada YouTube dan Instagram. Mengimplementasikan Hybrid Ensemble Model dengan Soft Voting.",
+      tech: ["Python", "Tkinter", "Scikit-Learn", "NLTK"],
       repo: "https://github.com/RayanHakim/Skripsi-Analisis-Sentimen-Mobil-Listrik-Cina" 
     },
     {
       title: "Website CMS Dinkominfostasandi",
-      category: "FULLSTACK DEVELOPMENT",
+      category: "FULLSTACK DEV",
       thumbnail: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop",
-      desc: "Digitalisasi layanan informasi publik Kabupaten Purworejo. Mempermudah akses data birokrasi secara real-time melalui integrasi MySQL dan Flask API.",
+      desc: "Digitalisasi layanan informasi publik Kabupaten Purworejo. Mempermudah akses data birokrasi secara real-time.",
       tech: ["Python", "Flask", "MySQL", "Bootstrap"],
       repo: "https://github.com/RayanHakim/DINKOMINFOSTASANDI_PURWOREJO_MAGANG"
     },
     {
       title: "Pahlawan Indonesia Mobile",
-      category: "MOBILE DEVELOPMENT",
+      category: "MOBILE DEV",
       thumbnail: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=1200&auto=format&fit=crop",
-      desc: "Aplikasi mobile edukatif berbasis Flutter. Mengintegrasikan autentikasi terenkripsi, SQLite untuk penyimpanan lokal, REST API, Sensor Gyroscope untuk fitur interaktif, dan sistem notifikasi lokal.",
-      tech: ["Flutter", "Dart", "SQLite", "REST API", "Sensors"],
+      desc: "Aplikasi mobile edukatif berbasis Flutter. Mengintegrasikan autentikasi terenkripsi, SQLite, dan Sensor Gyroscope.",
+      tech: ["Flutter", "Dart", "SQLite", "REST API"],
       repo: "https://github.com/RayanHakim/Project_Akhir_Mobile"
     },
     {
-      title: "QA Automation Testing Website Dinkominfostasandi",
+      title: "QA Automation Testing",
       category: "QUALITY ASSURANCE",
       thumbnail: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop",
-      desc: "Pengujian otomatis end-to-end pada Website Dinkominfostasandi. Mencakup UI Testing menggunakan Selenium, Unit Testing API dengan Pytest, serta simulasi Load Testing hingga 1000 Virtual Users menggunakan Locust.",
+      desc: "Pengujian otomatis end-to-end pada Website Dinkominfostasandi. Mencakup UI Testing dan Unit Testing API.",
       tech: ["Selenium", "Pytest", "Locust", "Python"],
       repo: "https://github.com/RayanHakim/Quality-Assurance-Kominfo"
     },
     {
-      title: "Pentest Website Dinkominfostasandi",
+      title: "Pentest Website Kominfo",
       category: "CYBERSECURITY",
       thumbnail: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1200&auto=format&fit=crop",
-      desc: "Hasil pengujian keamanan (Penetration Testing) pada website dinkominfostasandi. Menggabungkan automated scanning (OWASP ZAP) dan pengujian manual terhadap kerentanan Brute Force, XSS, serta SQL Injection.",
+      desc: "Hasil pengujian keamanan (Penetration Testing) pada website dinkominfostasandi menggunakan automated scanning.",
       tech: ["OWASP ZAP", "Python", "Security Testing"],
       repo: "https://github.com/RayanHakim/Pentest-Kominfo"
     }
@@ -66,11 +66,7 @@ const portfolioData = {
     { name: "C++", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" },
     { name: "PHP", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/php/php-original.svg" },
     { name: "React.js", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" },
-    { name: "Next.js", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/nextjs/nextjs-original-wordmark.svg" },
-    { name: "Laravel", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/laravel/laravel-original-wordmark.svg" },
-    { name: "Tailwind CSS", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/tailwindcss/tailwindcss-original.svg" },
     { name: "Flutter", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/flutter/flutter-original.svg" },
-    { name: "Supabase", icon: "https://cdn.simpleicons.org/supabase/3ECF8E" },
   ],
 
   tools: [
@@ -83,199 +79,298 @@ const portfolioData = {
   ]
 };
 
-const TechCard = ({ item }) => (
-  <div className="flex items-center gap-4 sm:gap-6 bg-slate-900/40 border border-slate-800 p-4 sm:p-6 rounded-2xl hover:border-sky-500/50 hover:bg-slate-800/60 transition-all duration-300 group shadow-lg">
-    <div className="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center p-2 bg-white/5 rounded-xl group-hover:bg-white/10 transition-colors shrink-0">
-      <img 
-        src={item.icon} 
-        alt={item.name} 
-        className={`w-8 h-8 sm:w-12 sm:h-12 object-contain group-hover:scale-110 transition-transform ${item.name === 'Next.js' || item.name === 'GitHub' ? 'bg-white/10 p-1 rounded-md' : ''}`} 
-        onError={(e) => { e.target.src = "https://cdn.simpleicons.org/google/ffffff"; }} 
-      />
+// --- Komponen Marquee Futuristik ---
+const TechMarquee = ({ items, title, reverse = false }) => {
+  const marqueeClass = reverse ? "animate-marquee-reverse" : "animate-marquee";
+  return (
+    <div className="relative overflow-hidden py-4 mb-8">
+      <h3 className="text-xl sm:text-2xl font-mono mb-8 text-center text-[#8C00FF] uppercase tracking-[0.3em] font-bold">
+        {'//'} {title}
+      </h3>
+      
+      {/* Efek gradient fading di tepi marquee */}
+      <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#080210] to-transparent z-10 pointer-events-none"></div>
+      <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#080210] to-transparent z-10 pointer-events-none"></div>
+
+      <div className="flex w-max">
+        <div className={`flex gap-8 px-4 ${marqueeClass}`}>
+          {[...items, ...items, ...items, ...items].map((item, idx) => (
+            <div
+              key={idx}
+              className="flex items-center gap-6 p-6 sm:p-8 bg-[#0e041d] border-2 border-[#450693] rounded-2xl hover:border-[#8C00FF] hover:shadow-[0_0_25px_rgba(140,0,255,0.4)] hover:-translate-y-2 transition-all duration-300 min-w-[260px] sm:min-w-[320px] group"
+            >
+              <div className="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center p-2 opacity-80 group-hover:opacity-100 transition-opacity">
+                <img 
+                  src={item.icon} 
+                  alt={item.name} 
+                  className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
+                  onError={(e) => { e.target.src = "https://cdn.simpleicons.org/google/ffffff"; }} 
+                />
+              </div>
+              <span className="text-xl sm:text-2xl font-bold text-slate-300 group-hover:text-[#FFC400] transition-colors">
+                {item.name}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
-    <span className="text-sm sm:text-xl font-bold text-slate-200 group-hover:text-white transition-colors">{item.name}</span>
+  );
+};
+
+// --- Komponen Grid Project Modern (1 Baris 1 Kolom Ekstra Besar) ---
+const ProjectGrid = ({ projects }) => (
+  <div className="grid grid-cols-1 gap-12 sm:gap-16 px-4">
+    {projects.map((project, i) => (
+      <div
+        key={i}
+        className="group relative flex flex-col lg:flex-row overflow-hidden bg-[#0a0214] border-2 border-[#450693] hover:border-[#FF3F7F] rounded-3xl transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_40px_-10px_rgba(255,63,127,0.3)]"
+      >
+        <div className="w-full lg:w-5/12 h-64 sm:h-96 lg:h-auto overflow-hidden relative border-b-2 lg:border-b-0 lg:border-r-2 border-[#450693] group-hover:border-[#FF3F7F] transition-colors duration-500">
+          <div className="absolute inset-0 bg-[#450693]/50 z-10 group-hover:bg-transparent transition-colors duration-500"></div>
+          <img 
+            src={project.thumbnail} 
+            alt={project.title}
+            className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" 
+          />
+          {/* Garis aksen highlight */}
+          <div className="absolute bottom-0 left-0 w-full lg:w-2 lg:h-full h-2 bg-gradient-to-r lg:bg-gradient-to-b from-[#8C00FF] to-[#FF3F7F] z-20"></div>
+        </div>
+
+        <div className="w-full lg:w-7/12 p-8 sm:p-12 lg:p-16 flex flex-col relative z-10 bg-gradient-to-b lg:bg-gradient-to-r from-[#0e041d] to-[#0a0214]">
+          <span className="inline-block self-start font-mono text-[#FFC400] text-xs sm:text-sm font-bold uppercase tracking-widest mb-4">
+            {project.category}
+          </span>
+          <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-6 leading-tight group-hover:text-[#8C00FF] transition-colors">
+            {project.title}
+          </h3>
+          <p className="text-slate-400 mb-8 text-lg sm:text-xl font-light leading-relaxed">
+            {project.desc}
+          </p>
+          <div className="flex flex-wrap gap-3 mb-10">
+            {project.tech.map((tech, idx) => (
+              <span
+                key={idx}
+                className="px-4 py-2 bg-[#450693]/20 text-[#8C00FF] text-sm sm:text-base font-mono rounded-lg border border-[#450693]"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+          <a
+            href={project.repo}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-auto flex items-center gap-4 py-4 px-8 bg-transparent border-2 border-[#FF3F7F] text-[#FF3F7F] w-fit rounded-xl hover:bg-[#FF3F7F] hover:text-white transition-all duration-300 font-bold uppercase text-sm sm:text-base tracking-widest"
+          >
+            Source Code <span className="font-mono text-xl leading-none">{'->'}</span>
+          </a>
+        </div>
+      </div>
+    ))}
   </div>
 );
 
-const BigProjectCard = ({ project }) => (
-  <div className="group relative w-full bg-slate-900/20 border border-slate-800 rounded-3xl sm:rounded-[2.5rem] overflow-hidden hover:border-sky-500/40 transition-all duration-700 shadow-2xl flex flex-col lg:flex-row items-stretch">
-    <div className="w-full lg:w-1/2 overflow-hidden h-64 sm:h-80 lg:h-auto relative shrink-0">
-      <img 
-        src={project.thumbnail} 
-        alt={project.title} 
-        className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 opacity-60 lg:opacity-50 group-hover:opacity-100"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent lg:hidden"></div>
-    </div>
+// --- Komponen Experience Timeline ---
+const ExperienceCard = ({ experience }) => (
+  <div className="relative pl-10 sm:pl-16 py-8 border-l-4 border-[#450693] hover:border-[#FFC400] transition-colors duration-300 max-w-5xl mx-auto group">
+    {/* Titik Timeline */}
+    <div className="absolute left-[-14px] top-10 w-6 h-6 bg-[#0a0214] border-4 border-[#8C00FF] group-hover:border-[#FFC400] group-hover:bg-[#FFC400] group-hover:shadow-[0_0_15px_#FFC400] rounded-full transition-all duration-300"></div>
     
-    <div className="w-full lg:w-1/2 p-6 sm:p-10 lg:p-14 flex flex-col justify-center bg-gradient-to-br from-slate-900/80 lg:from-slate-900/40 to-transparent relative z-10">
-      <span className="text-sky-500 font-mono text-[10px] sm:text-xs tracking-[0.2em] sm:tracking-[0.4em] mb-3 sm:mb-4 uppercase">{project.category}</span>
-      <h3 className="text-2xl sm:text-3xl lg:text-5xl font-black text-white mb-4 sm:mb-6 group-hover:text-sky-400 transition-colors leading-tight uppercase tracking-tighter">
-        {project.title}
-      </h3>
-      <p className="text-slate-400 text-sm sm:text-base lg:text-lg leading-relaxed mb-6 sm:mb-8 font-light italic">
-        "{project.desc}"
-      </p>
-      <div className="flex flex-wrap gap-2 mb-8 sm:mb-10">
-        {project.tech.map(t => (
-          <span key={t} className="bg-slate-800 text-slate-300 text-[9px] sm:text-[10px] font-bold px-2 sm:px-3 py-1 rounded-md border border-slate-700 uppercase tracking-widest hover:text-sky-300 hover:border-sky-900 transition-colors">{t}</span>
-        ))}
+    <div className="bg-[#0e041d] border-2 border-[#450693] p-8 sm:p-12 rounded-2xl group-hover:border-[#8C00FF] transition-colors">
+      <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 mb-6">
+        <div>
+          <h4 className="text-2xl sm:text-3xl font-bold text-white mb-2">
+            {experience.role}
+          </h4>
+          <p className="text-[#8C00FF] font-mono text-base sm:text-lg tracking-wider">{experience.company}</p>
+        </div>
+        <span className="font-mono text-[#FF3F7F] text-sm sm:text-base bg-[#450693]/20 px-4 py-2 rounded-lg border border-[#450693] whitespace-nowrap">
+          {experience.duration}
+        </span>
       </div>
-      <a href={project.repo} target="_blank" rel="noopener noreferrer" className="w-fit flex items-center gap-3 sm:gap-4 text-white font-bold group/btn mt-auto">
-        <span className="h-10 w-10 sm:h-14 sm:w-14 rounded-full border border-slate-700 flex items-center justify-center group-hover/btn:bg-sky-600 group-hover/btn:border-sky-600 transition-all shadow-xl text-lg sm:text-xl">→</span>
-        <span className="tracking-[0.1em] sm:tracking-[0.2em] font-mono uppercase text-xs sm:text-sm">Source_Code</span>
-      </a>
+      <p className="text-slate-400 font-light text-lg sm:text-xl leading-relaxed">
+        {experience.desc}
+      </p>
     </div>
   </div>
 );
 
 export default function App() {
   return (
-    <div className="bg-slate-950 text-slate-300 min-h-screen font-sans selection:bg-sky-500 selection:text-white overflow-x-hidden">
-      
-      <section className="relative min-h-[100dvh] flex flex-col justify-center items-center px-4 sm:px-6 text-center pt-20 pb-10">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[500px] lg:w-[700px] h-[300px] sm:h-[500px] lg:h-[700px] bg-sky-600/10 blur-[100px] lg:blur-[150px] rounded-full pointer-events-none"></div>
+    <div className="font-sans relative bg-[#080210] min-h-screen overflow-x-hidden text-slate-300 selection:bg-[#FF3F7F] selection:text-white">
+      {/* --- INJEKSI CSS UNTUK ANIMASI TECH/CYBER --- */}
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap');
         
-        <div className="z-10 animate-fade-in w-full max-w-5xl">
-          <p className="font-mono text-sky-500 mb-4 sm:mb-6 tracking-[0.2em] sm:tracking-[0.5em] text-xs sm:text-sm uppercase">Portofolio</p>
-          <h1 className="text-5xl sm:text-7xl lg:text-[8rem] font-black text-white tracking-tighter leading-none mb-6 sm:mb-8 uppercase break-words">
-            {portfolioData.name.split(' ')[0]} <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-indigo-500">
+        .font-mono {
+          font-family: 'Fira Code', monospace;
+        }
+        
+        @keyframes marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        @keyframes marquee-reverse {
+          0% { transform: translateX(-50%); }
+          100% { transform: translateX(0); }
+        }
+        .animate-marquee {
+          animation: marquee 40s linear infinite;
+        }
+        .animate-marquee-reverse {
+          animation: marquee-reverse 40s linear infinite;
+        }
+
+        .cyber-grid {
+          position: absolute;
+          width: 200%;
+          height: 200%;
+          top: -50%;
+          left: -50%;
+          background-image: 
+            linear-gradient(rgba(69, 6, 147, 0.2) 2px, transparent 2px),
+            linear-gradient(90deg, rgba(69, 6, 147, 0.2) 2px, transparent 2px);
+          background-size: 60px 60px;
+          transform: perspective(500px) rotateX(60deg);
+          animation: grid-move 20s linear infinite;
+          pointer-events: none;
+          z-index: 0;
+        }
+        @keyframes grid-move {
+          0% { transform: perspective(500px) rotateX(60deg) translateY(0); }
+          100% { transform: perspective(500px) rotateX(60deg) translateY(60px); }
+        }
+      `}</style>
+
+      {/* Efek Cahaya Belakang (Glow Orbs) */}
+      <div className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
+        <div className="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] bg-[#450693] rounded-full blur-[120px] opacity-20"></div>
+        <div className="absolute bottom-[-10%] right-[-10%] w-[30vw] h-[30vw] bg-[#8C00FF] rounded-full blur-[150px] opacity-10"></div>
+        <div className="absolute top-[40%] right-[10%] w-[20vw] h-[20vw] bg-[#FF3F7F] rounded-full blur-[150px] opacity-10"></div>
+      </div>
+
+      {/* --- HERO SECTION --- */}
+      <section className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 text-center z-10 border-b border-[#450693]/30">
+        <div className="max-w-5xl mx-auto w-full relative">
+          
+          <div className="inline-block mb-8 font-mono text-[#FFC400] tracking-[0.3em] text-sm sm:text-base uppercase bg-[#450693]/20 px-6 py-2 border-2 border-[#450693] rounded-lg">
+            System.out.println("Hello World");
+          </div>
+          
+          <h1 className="text-5xl sm:text-7xl md:text-[6rem] lg:text-[7rem] font-black leading-none mb-6 text-white tracking-tight">
+            {portfolioData.name.split(' ')[0]} <br className="hidden sm:block" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8C00FF] via-[#FF3F7F] to-[#FFC400]">
               {portfolioData.name.split(' ').slice(1).join(' ')}
             </span>
           </h1>
-          <p className="text-slate-400 text-sm sm:text-lg lg:text-xl max-w-2xl mx-auto font-light leading-relaxed uppercase tracking-widest border-y border-slate-900 py-3 sm:py-4">
-            {portfolioData.role}
+          
+          <p className="text-xl sm:text-2xl font-mono text-slate-400 mb-12 max-w-2xl mx-auto uppercase tracking-widest">
+            {'>'} {portfolioData.role}_
           </p>
           
-          <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
-            <a href="#projects" className="w-full sm:w-auto bg-white text-black px-8 py-4 rounded-full font-black hover:bg-sky-500 hover:text-white transition-all transform hover:scale-105 shadow-2xl tracking-widest text-xs uppercase text-center">
-              VIEW PROJECTS
+          <div className="flex flex-col sm:flex-row gap-5 justify-center items-center mt-4">
+            <a
+              href="#projects"
+              className="w-full sm:w-auto px-10 py-5 bg-[#8C00FF] text-white font-bold rounded-xl hover:bg-[#FF3F7F] hover:shadow-[0_0_25px_rgba(255,63,127,0.5)] transition-all duration-300 uppercase text-sm tracking-widest"
+            >
+              View Projects
             </a>
-            
-            <a 
-              href={portfolioData.cvUrl} 
+            <a
+              href={portfolioData.cvUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto border-2 border-sky-500/50 text-white px-8 py-4 rounded-full font-black hover:bg-sky-500/10 hover:border-sky-400 transition-all tracking-widest text-xs uppercase text-center"
+              className="w-full sm:w-auto px-10 py-5 bg-transparent text-white font-bold rounded-xl border-2 border-[#8C00FF] hover:bg-[#8C00FF]/10 transition-all duration-300 uppercase text-sm tracking-widest"
             >
-              VIEW CV
+              Lihat CV
             </a>
-
-            <a href={portfolioData.githubUrl} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto border border-slate-700 text-white px-8 py-4 rounded-full font-black hover:bg-slate-800 transition-all tracking-widest text-xs uppercase text-center">
-              Github Profile
+            <a
+              href={portfolioData.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto px-10 py-5 bg-[#0e041d] text-[#FFC400] font-bold rounded-xl border-2 border-[#450693] hover:border-[#FFC400] hover:text-[#FFC400] hover:bg-[#FFC400]/10 transition-all duration-300 uppercase text-sm tracking-widest flex items-center justify-center gap-3"
+            >
+              <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              GitHub
             </a>
           </div>
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-32 sm:space-y-48 pb-32 sm:pb-40">
+      {/* --- CONTENT SECTION --- */}
+      <div className="w-full relative z-20 pt-16 pb-20">
         
-        <section id="projects">
-          <div className="flex flex-col items-center mb-16 sm:mb-24 text-center">
-             <h2 className="text-4xl sm:text-5xl lg:text-7xl font-black text-white mb-4 sm:mb-6 uppercase italic tracking-tighter">Selected Works</h2>
-             <div className="h-1.5 w-24 sm:w-32 bg-sky-600 rounded-full"></div>
-          </div>
-          
-          <div className="grid grid-cols-1 gap-16 sm:gap-24">
-            {portfolioData.projects.map((p, i) => (
-              <BigProjectCard key={i} project={p} />
-            ))}
-          </div>
-
-          <div className="mt-24 sm:mt-32 flex flex-col items-center bg-slate-900/20 p-8 sm:p-20 rounded-3xl sm:rounded-[3rem] border border-slate-800 border-dashed group text-center mx-4 sm:mx-0">
-            <h3 className="text-xl sm:text-2xl font-bold text-white mb-6 sm:mb-8 tracking-widest uppercase opacity-80 group-hover:opacity-100 transition-opacity">Interested in more?</h3>
-            <a 
-              href={portfolioData.githubUrl} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="group/gh flex flex-col sm:flex-row items-center gap-4 sm:gap-6 bg-white text-black px-8 sm:px-12 py-4 sm:py-6 rounded-2xl font-black hover:bg-sky-500 hover:text-white transition-all shadow-xl transform hover:-translate-y-1 w-full sm:w-auto justify-center"
-            >
-              <img src="https://cdn.simpleicons.org/github/000000" className="w-8 h-8 group-hover/gh:filter group-hover/gh:invert transition-all shrink-0" alt="GitHub" />
-              <span className="tracking-[0.1em] sm:tracking-[0.2em] font-mono text-xs sm:text-sm uppercase text-center">Explore all repos</span>
-            </a>
-          </div>
+        {/* TECH STACK & TOOLS (MARQUEE) */}
+        <section className="mb-20">
+          <TechMarquee items={portfolioData.techStack} title="Technologies" />
+          <TechMarquee items={portfolioData.tools} title="Development_Tools" reverse={true} />
         </section>
 
-        <section id="experience" className="max-w-5xl mx-auto">
-          <div className="mb-12 sm:mb-20 text-center sm:text-left">
-            <h2 className="text-3xl sm:text-4xl font-black text-white mb-4 uppercase tracking-tighter italic">Experience</h2>
-            <div className="h-1 w-12 bg-sky-500 mx-auto sm:mx-0"></div>
+        {/* PROJECTS */}
+        <section id="projects" className="max-w-7xl mx-auto px-4 sm:px-6 mb-24">
+          <div className="flex flex-col sm:flex-row items-center gap-6 mb-12 px-4 text-center sm:text-left">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight">
+              Featured<span className="text-[#8C00FF]">_Works</span>
+            </h2>
+            <div className="h-1 flex-grow bg-gradient-to-r from-[#450693] to-transparent w-full sm:w-auto"></div>
           </div>
-          <div className="space-y-8 sm:space-y-12">
+          <ProjectGrid projects={portfolioData.projects} />
+        </section>
+
+        {/* EXPERIENCE */}
+        <section id="experience" className="max-w-7xl mx-auto px-4 sm:px-6 mb-16">
+          <div className="flex flex-col sm:flex-row items-center gap-6 mb-16 px-4 text-center sm:text-left">
+            <div className="hidden sm:block h-1 w-16 bg-[#8C00FF]"></div>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight">
+              Work<span className="text-[#FF3F7F]">_Experience</span>
+            </h2>
+            <div className="h-1 flex-grow bg-gradient-to-r from-[#450693] to-transparent w-full sm:w-auto"></div>
+          </div>
+          <div className="px-4">
             {portfolioData.internships.map((job, i) => (
-              <div key={i} className="bg-slate-900/30 p-6 sm:p-12 rounded-3xl sm:rounded-[2rem] border border-slate-800 hover:border-sky-900/50 transition-all group shadow-xl">
-                <div className="flex flex-col sm:flex-row justify-between mb-6 sm:mb-8 gap-4 items-start sm:items-center">
-                   <div>
-                      <h4 className="text-2xl sm:text-3xl font-black text-white group-hover:text-sky-400 transition-colors uppercase leading-tight tracking-tight">{job.role}</h4>
-                      <p className="text-sky-500 font-mono font-bold mt-1 sm:mt-2 tracking-widest uppercase text-xs sm:text-sm">{job.company}</p>
-                   </div>
-                   <span className="text-slate-400 font-mono bg-slate-950 px-4 sm:px-6 py-2 rounded-full border border-slate-800 h-fit text-[10px] sm:text-xs uppercase tracking-widest font-bold shadow-inner whitespace-nowrap">{job.duration}</span>
-                </div>
-                <p className="text-slate-400 leading-relaxed text-base sm:text-xl font-light italic border-l-4 border-slate-800 pl-4 sm:pl-8 group-hover:border-sky-900 transition-colors">
-                  "{job.desc}"
-                </p>
-              </div>
+              <ExperienceCard key={i} experience={job} />
             ))}
           </div>
         </section>
 
-        <section id="skills" className="max-w-5xl mx-auto space-y-24 sm:space-y-32">
-          <div>
-            <div className="mb-8 sm:mb-12 flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
-              <h2 className="text-2xl sm:text-3xl font-black text-white tracking-widest uppercase text-center sm:text-left">Language</h2>
-              <div className="h-px bg-slate-800 w-full sm:flex-grow"></div>
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-              {portfolioData.techStack.map((s, i) => (
-                <TechCard key={i} item={s} />
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <div className="mb-8 sm:mb-12 flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
-              <h2 className="text-2xl sm:text-3xl font-black text-white tracking-widest uppercase opacity-60 italic text-center sm:text-left">Tools</h2>
-              <div className="h-px bg-slate-800 w-full sm:flex-grow opacity-60"></div>
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-              {portfolioData.tools.map((t, i) => (
-                <TechCard key={i} item={t} />
-              ))}
-            </div>
-          </div>
-
-          <div className="bg-gradient-to-br from-indigo-950/40 to-slate-900/20 p-8 sm:p-16 rounded-3xl sm:rounded-[4rem] border border-sky-500/10 flex flex-col lg:flex-row items-center justify-between gap-8 sm:gap-10 shadow-2xl relative overflow-hidden group text-center lg:text-left">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-sky-500/5 blur-3xl rounded-full group-hover:bg-sky-500/10 transition-colors"></div>
-              <div className="z-10">
-                <span className="text-sky-500 font-mono mb-2 sm:mb-4 tracking-[0.2em] sm:tracking-[0.5em] block uppercase text-xs sm:text-sm font-bold">English Proficiency</span>
-                <h4 className="text-3xl sm:text-4xl font-black text-white tracking-tighter uppercase leading-none">TOEFL EPT Score</h4>
-                <p className="text-slate-500 font-mono mt-2 sm:mt-3 uppercase tracking-[0.1em] sm:tracking-widest text-xs sm:text-sm italic opacity-70">Verified March 2026</p>
-              </div>
-              <div className="flex flex-col items-center z-10 bg-slate-950/30 p-6 sm:p-8 rounded-3xl border border-slate-800/50">
-                <div className="text-7xl sm:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-sky-700 leading-none group-hover:scale-110 transition-transform duration-500">437</div>
-                <span className="text-slate-400 font-bold tracking-[0.5em] sm:tracking-[1em] mt-2 uppercase text-[10px] sm:text-xs">Total</span>
-              </div>
-          </div>
-        </section>
       </div>
 
-      <footer className="py-16 sm:py-24 border-t border-slate-900 bg-slate-950 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="flex flex-col lg:flex-row justify-between items-center gap-10 sm:gap-12">
-            <div className="text-center lg:text-left">
-              <h2 className="text-3xl sm:text-4xl font-black text-white mb-2 tracking-tighter uppercase leading-none tracking-[0.05em]">{portfolioData.name}</h2>
-            </div>
-            <div className="flex flex-wrap justify-center gap-6 sm:gap-10">
-              <a href={portfolioData.githubUrl} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-all font-bold text-[10px] sm:text-xs tracking-widest uppercase border-b-2 border-transparent hover:border-sky-500 pb-1">Github</a>
-              <a href="https://www.linkedin.com/in/rayan-luqman-hakim-ab8a81379/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-all font-bold text-[10px] sm:text-xs tracking-widest uppercase border-b-2 border-transparent hover:border-sky-500 pb-1">LinkedIn</a>
-              <a href="mailto:rayanluqmanhakim@gmail.com" className="text-slate-400 hover:text-white transition-all font-bold text-[10px] sm:text-xs tracking-widest uppercase border-b-2 border-transparent hover:border-sky-500 pb-1">Email</a>
-            </div>
+      {/* --- FOOTER MODERN (CYBER GRID) --- */}
+      <footer className="relative bg-[#05010a] pt-32 pb-16 border-t-2 border-[#450693]/50 overflow-hidden z-30">
+        
+        {/* Grid Background Effect */}
+        <div className="absolute bottom-0 left-0 w-full h-[400px] overflow-hidden opacity-30">
+           <div className="cyber-grid"></div>
+           <div className="absolute inset-0 bg-gradient-to-t from-transparent to-[#05010a]"></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-6 relative z-10 flex flex-col items-center text-center">
+          <h2 className="text-5xl sm:text-7xl lg:text-[6rem] font-black text-white mb-6 uppercase tracking-widest">
+            Let's <span className="text-[#FFC400]">Connect</span>
+          </h2>
+          <p className="text-slate-400 font-mono text-lg sm:text-xl mb-16">
+            Open for opportunities and collaborations.
+          </p>
+
+          <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-8 sm:gap-12 mb-24">
+            <a href={portfolioData.githubUrl} target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-[#8C00FF] font-mono text-xl sm:text-2xl uppercase tracking-widest transition-colors hover:scale-110 transform">
+              [ GitHub ]
+            </a>
+            <a href="https://www.linkedin.com/in/rayan-luqman-hakim-ab8a81379/" target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-[#FF3F7F] font-mono text-xl sm:text-2xl uppercase tracking-widest transition-colors hover:scale-110 transform">
+              [ LinkedIn ]
+            </a>
+            <a href="mailto:rayanluqmanhakim@gmail.com" className="text-slate-300 hover:text-[#FFC400] font-mono text-xl sm:text-2xl uppercase tracking-widest transition-colors hover:scale-110 transform">
+              [ Email ]
+            </a>
           </div>
-          <div className="mt-16 sm:mt-20 pt-8 sm:pt-10 border-t border-slate-900/50 flex flex-col md:flex-row justify-between items-center gap-4 sm:gap-6 text-center md:text-left">
-            <p className="text-[9px] sm:text-[10px] font-mono text-slate-600 tracking-[0.2em] sm:tracking-[0.4em] uppercase">© 2026 Rayan Luqman Hakim</p>
-            <p className="text-[9px] sm:text-[10px] font-mono text-slate-600 tracking-[0.2em] sm:tracking-[0.4em] uppercase italic opacity-50">Handcrafted with React & Tailwind CSS</p>
-          </div>
+          
+          <div className="w-full h-1 bg-gradient-to-r from-transparent via-[#450693] to-transparent mb-12"></div>
+          
+          <p className="text-slate-500 font-mono text-sm sm:text-base uppercase tracking-widest">
+            © 2026 {portfolioData.name} <br className="sm:hidden mt-4" />
+            <span className="hidden sm:inline"> | </span> 
+            Built with React & Tailwind
+          </p>
         </div>
       </footer>
     </div>

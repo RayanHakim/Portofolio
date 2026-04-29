@@ -4,8 +4,10 @@ const portfolioData = {
   name: "Rayan Luqman Hakim",
   role: "Informatics Engineering",
   githubUrl: "https://github.com/RayanHakim",
-  cvUrl: "/Portofolio/CV_Rayan Luqman Hakim.pdf",    
+  cvUrl: "./CV_Rayan_Luqman_Hakim.pdf",    
   
+  about: "Mahasiswa Teknik Informatika dengan fokus pada Fullstack Development, Machine Learning (NLP), dan Quality Assurance. Berpengalaman mengembangkan aplikasi web, mobile, serta melakukan pengujian dan keamanan sistem melalui studi kasus nyata di instansi pemerintah. Memiliki minat dalam membangun solusi berbasis data dan meningkatkan kualitas serta keamanan perangkat lunak.",
+
   projects: [
     {
       title: "Sentiment Analysis Dashboard",
@@ -55,59 +57,96 @@ const portfolioData = {
       company: "Dinkominfostasandi Purworejo",
       duration: "Agustus 2025 - September 2025",
       desc: "Mengembangkan website cms informasi publik, mengelola basis data MySQL, dan membantu digitalisasi layanan informasi daerah."
+    },
+    {
+      role: "Staff Humas Kaderisasi Mahasiswa Baru",
+      company: "Universitas",
+      duration: "2023 - 2024",
+      desc: "Berperan dalam mengelola komunikasi dan penyebaran informasi antar panitia, mahasiswa baru, dan pihak eksternal. Bertanggungjawab menjaga citra positif kegiatan serta memastikan kelancaran hubungan dengan seluruh pihak eksternal."
     }
   ],
 
-  techStack: [
-    { name: "HTML5", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" },
-    { name: "CSS3", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" },
-    { name: "JavaScript", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" },
-    { name: "Python", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" },
-    { name: "C++", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" },
-    { name: "PHP", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/php/php-original.svg" },
-    { name: "React.js", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" },
-    { name: "Flutter", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/flutter/flutter-original.svg" },
-  ],
-
-  tools: [
-    { name: "GitHub", icon: "https://cdn.simpleicons.org/github/ffffff" },
-    { name: "VS Code", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original.svg" },
-    { name: "Postman", icon: "https://cdn.simpleicons.org/postman/FF6C37" },
-    { name: "MySQL", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" },
-    { name: "Figma", icon: "https://cdn.simpleicons.org/figma/F24E1E" },
-    { name: "Android Studio", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/androidstudio/androidstudio-original.svg" },
+  skills: [
+    {
+      category: "Programming Languages",
+      items: [
+        { name: "HTML", icon: "https://cdn.simpleicons.org/html5/E34F26" },
+        { name: "CSS", icon: "https://cdn.simpleicons.org/css3/1572B6" },
+        { name: "JavaScript", icon: "https://cdn.simpleicons.org/javascript/F7DF1E" },
+        { name: "Python", icon: "https://cdn.simpleicons.org/python/3776AB" },
+        { name: "C++", icon: "https://cdn.simpleicons.org/cplusplus/00599C" },
+        { name: "PHP", icon: "https://cdn.simpleicons.org/php/777BB4" },
+        { name: "Dart", icon: "https://cdn.simpleicons.org/dart/0175C2" }
+      ]
+    },
+    {
+      category: "Frameworks & Libraries",
+      items: [
+        { name: "React", icon: "https://cdn.simpleicons.org/react/61DAFB" },
+        { name: "Laravel", icon: "https://cdn.simpleicons.org/laravel/FF2D20" },
+        { name: "Next.js", icon: "https://cdn.simpleicons.org/nextdotjs/ffffff" },
+        { name: "Flutter", icon: "https://cdn.simpleicons.org/flutter/02569B" }
+      ]
+    },
+    {
+      category: "Databases",
+      items: [
+        { name: "MySQL", icon: "https://cdn.simpleicons.org/mysql/4479A1" },
+        { name: "SQLite", icon: "https://cdn.simpleicons.org/sqlite/003B57" },
+        { name: "Supabase", icon: "https://cdn.simpleicons.org/supabase/3ECF8E" }
+      ]
+    },
+    {
+      category: "Testing & Security",
+      items: [
+        { name: "Selenium", icon: "https://cdn.simpleicons.org/selenium/43B02A" },
+        { name: "JUnit", icon: "https://cdn.simpleicons.org/junit5/25A162" },
+        { name: "JMeter", icon: "https://cdn.simpleicons.org/apachejmeter/D22128" },
+        { name: "OWASP ZAP", icon: "https://cdn.simpleicons.org/owasp/ffffff" }
+      ]
+    },
+    {
+      category: "Development Tools",
+      items: [
+        { name: "VS Code", icon: "https://cdn.simpleicons.org/visualstudiocode/007ACC" },
+        { name: "GitHub", icon: "https://cdn.simpleicons.org/github/ffffff" },
+        { name: "Android Studio", icon: "https://cdn.simpleicons.org/androidstudio/3DDC84" },
+        { name: "Figma", icon: "https://cdn.simpleicons.org/figma/F24E1E" }
+      ]
+    }
   ]
 };
 
-// --- Komponen Marquee Futuristik ---
-const TechMarquee = ({ items, title, reverse = false }) => {
-  const marqueeClass = reverse ? "animate-marquee-reverse" : "animate-marquee";
-  return (
-    <div className="relative overflow-hidden py-4 mb-8">
-      <h3 className="text-xl sm:text-2xl font-mono mb-8 text-center text-[#8C00FF] uppercase tracking-[0.3em] font-bold">
-        {'//'} {title}
-      </h3>
-      
-      {/* Efek gradient fading di tepi marquee */}
-      <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#080210] to-transparent z-10 pointer-events-none"></div>
-      <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#080210] to-transparent z-10 pointer-events-none"></div>
+// --- Komponen Animated Tech Marquee Raksasa ---
+const TechMarqueeRow = ({ category, items, reverse }) => {
+  const duplicatedItems = [...items, ...items, ...items, ...items, ...items];
+  const marqueeClass = reverse ? "animate-scroll-reverse" : "animate-scroll";
 
-      <div className="flex w-max">
-        <div className={`flex gap-8 px-4 ${marqueeClass}`}>
-          {[...items, ...items, ...items, ...items].map((item, idx) => (
+  return (
+    <div className="w-full flex flex-col mb-12 sm:mb-20">
+      <div className="w-full max-w-7xl mx-auto px-6 mb-6">
+        <h3 className="text-[#FFC400] font-mono text-xl sm:text-2xl font-bold uppercase tracking-widest border-l-4 border-[#8C00FF] pl-4">
+          {'//'} {category}
+        </h3>
+      </div>
+      
+      {/* Container dibuat sangat besar (h-32 sampai h-40) */}
+      <div className="relative overflow-hidden flex items-center h-32 sm:h-40 w-full group">
+        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#080210] to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#080210] to-transparent z-10 pointer-events-none"></div>
+
+        <div className={`flex w-max gap-8 sm:gap-12 px-6 ${marqueeClass} group-hover:[animation-play-state:paused]`}>
+          {duplicatedItems.map((item, idx) => (
             <div
               key={idx}
-              className="flex items-center gap-6 p-6 sm:p-8 bg-[#0e041d] border-2 border-[#450693] rounded-2xl hover:border-[#8C00FF] hover:shadow-[0_0_25px_rgba(140,0,255,0.4)] hover:-translate-y-2 transition-all duration-300 min-w-[260px] sm:min-w-[320px] group"
+              className="flex items-center gap-6 sm:gap-8 bg-[#0e041d] border-2 border-[#450693] px-8 py-6 sm:px-12 sm:py-8 rounded-3xl hover:border-[#FFC400] hover:shadow-[0_0_30px_rgba(255,196,0,0.4)] hover:-translate-y-3 transition-all duration-300 min-w-fit cursor-default"
             >
-              <div className="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center p-2 opacity-80 group-hover:opacity-100 transition-opacity">
-                <img 
-                  src={item.icon} 
-                  alt={item.name} 
-                  className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
-                  onError={(e) => { e.target.src = "https://cdn.simpleicons.org/google/ffffff"; }} 
-                />
-              </div>
-              <span className="text-xl sm:text-2xl font-bold text-slate-300 group-hover:text-[#FFC400] transition-colors">
+              <img 
+                src={item.icon} 
+                alt={item.name} 
+                className="w-12 h-12 sm:w-16 sm:h-16 object-contain drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]" 
+              />
+              <span className="text-white font-mono text-2xl sm:text-4xl font-black whitespace-nowrap tracking-wider">
                 {item.name}
               </span>
             </div>
@@ -118,7 +157,8 @@ const TechMarquee = ({ items, title, reverse = false }) => {
   );
 };
 
-// --- Komponen Grid Project Modern (1 Baris 1 Kolom Ekstra Besar) ---
+
+// --- Komponen Grid Project Modern ---
 const ProjectGrid = ({ projects }) => (
   <div className="grid grid-cols-1 gap-12 sm:gap-16 px-4">
     {projects.map((project, i) => (
@@ -133,7 +173,6 @@ const ProjectGrid = ({ projects }) => (
             alt={project.title}
             className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" 
           />
-          {/* Garis aksen highlight */}
           <div className="absolute bottom-0 left-0 w-full lg:w-2 lg:h-full h-2 bg-gradient-to-r lg:bg-gradient-to-b from-[#8C00FF] to-[#FF3F7F] z-20"></div>
         </div>
 
@@ -173,8 +212,7 @@ const ProjectGrid = ({ projects }) => (
 
 // --- Komponen Experience Timeline ---
 const ExperienceCard = ({ experience }) => (
-  <div className="relative pl-10 sm:pl-16 py-8 border-l-4 border-[#450693] hover:border-[#FFC400] transition-colors duration-300 max-w-5xl mx-auto group">
-    {/* Titik Timeline */}
+  <div className="relative ml-4 sm:ml-0 pl-10 sm:pl-16 py-8 border-l-4 border-[#450693] hover:border-[#FFC400] transition-colors duration-300 max-w-5xl mx-auto group">
     <div className="absolute left-[-14px] top-10 w-6 h-6 bg-[#0a0214] border-4 border-[#8C00FF] group-hover:border-[#FFC400] group-hover:bg-[#FFC400] group-hover:shadow-[0_0_15px_#FFC400] rounded-full transition-all duration-300"></div>
     
     <div className="bg-[#0e041d] border-2 border-[#450693] p-8 sm:p-12 rounded-2xl group-hover:border-[#8C00FF] transition-colors">
@@ -199,28 +237,23 @@ const ExperienceCard = ({ experience }) => (
 export default function App() {
   return (
     <div className="font-sans relative bg-[#080210] min-h-screen overflow-x-hidden text-slate-300 selection:bg-[#FF3F7F] selection:text-white">
-      {/* --- INJEKSI CSS UNTUK ANIMASI TECH/CYBER --- */}
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Inter:wght@400;700;900&display=swap');
         
-        .font-mono {
-          font-family: 'Fira Code', monospace;
-        }
-        
-        @keyframes marquee {
+        .font-mono { font-family: 'Fira Code', monospace; }
+        .font-sans { font-family: 'Inter', sans-serif; }
+
+        @keyframes scroll {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
         }
-        @keyframes marquee-reverse {
+        @keyframes scroll-reverse {
           0% { transform: translateX(-50%); }
           100% { transform: translateX(0); }
         }
-        .animate-marquee {
-          animation: marquee 40s linear infinite;
-        }
-        .animate-marquee-reverse {
-          animation: marquee-reverse 40s linear infinite;
-        }
+        
+        .animate-scroll { animation: scroll 50s linear infinite; }
+        .animate-scroll-reverse { animation: scroll-reverse 50s linear infinite; }
 
         .cyber-grid {
           position: absolute;
@@ -243,7 +276,6 @@ export default function App() {
         }
       `}</style>
 
-      {/* Efek Cahaya Belakang (Glow Orbs) */}
       <div className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
         <div className="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] bg-[#450693] rounded-full blur-[120px] opacity-20"></div>
         <div className="absolute bottom-[-10%] right-[-10%] w-[30vw] h-[30vw] bg-[#8C00FF] rounded-full blur-[150px] opacity-10"></div>
@@ -265,8 +297,13 @@ export default function App() {
             </span>
           </h1>
           
-          <p className="text-xl sm:text-2xl font-mono text-slate-400 mb-12 max-w-2xl mx-auto uppercase tracking-widest">
+          <p className="text-xl sm:text-2xl font-mono text-slate-400 mb-6 max-w-2xl mx-auto uppercase tracking-widest">
             {'>'} {portfolioData.role}_
+          </p>
+
+          {/* Deskripsi Tentang Saya Dikembalikan */}
+          <p className="text-base sm:text-lg text-slate-400 mb-12 max-w-3xl mx-auto leading-relaxed">
+            {portfolioData.about}
           </p>
           
           <div className="flex flex-col sm:flex-row gap-5 justify-center items-center mt-4">
@@ -280,9 +317,10 @@ export default function App() {
               href={portfolioData.cvUrl}
               target="_blank"
               rel="noopener noreferrer"
+              download 
               className="w-full sm:w-auto px-10 py-5 bg-transparent text-white font-bold rounded-xl border-2 border-[#8C00FF] hover:bg-[#8C00FF]/10 transition-all duration-300 uppercase text-sm tracking-widest"
             >
-              Lihat CV
+              Download CV
             </a>
             <a
               href={portfolioData.githubUrl}
@@ -300,10 +338,26 @@ export default function App() {
       {/* --- CONTENT SECTION --- */}
       <div className="w-full relative z-20 pt-16 pb-20">
         
-        {/* TECH STACK & TOOLS (MARQUEE) */}
-        <section className="mb-20">
-          <TechMarquee items={portfolioData.techStack} title="Technologies" />
-          <TechMarquee items={portfolioData.tools} title="Development_Tools" reverse={true} />
+        {/* TECH STACK SECTION (FULL SCREEN & MARQUEE) */}
+        <section className="min-h-screen flex flex-col justify-center py-20 mb-12 relative">
+          <div className="max-w-7xl mx-auto px-6 mb-16 text-center w-full">
+            {/* Judul Diperbaiki Menjadi Tech_Stack */}
+            <h2 className="text-4xl sm:text-6xl font-black text-white uppercase tracking-tight mb-4">
+              Tech<span className="text-[#8C00FF]">_Stack</span>
+            </h2>
+            <div className="w-24 h-1 bg-[#8C00FF] mx-auto"></div>
+          </div>
+          
+          <div className="w-full relative overflow-hidden">
+            {portfolioData.skills.map((skillGroup, index) => (
+              <TechMarqueeRow 
+                key={index} 
+                category={skillGroup.category} 
+                items={skillGroup.items} 
+                reverse={index % 2 !== 0}
+              />
+            ))}
+          </div>
         </section>
 
         {/* PROJECTS */}
@@ -337,8 +391,6 @@ export default function App() {
 
       {/* --- FOOTER MODERN (CYBER GRID) --- */}
       <footer className="relative bg-[#05010a] pt-32 pb-16 border-t-2 border-[#450693]/50 overflow-hidden z-30">
-        
-        {/* Grid Background Effect */}
         <div className="absolute bottom-0 left-0 w-full h-[400px] overflow-hidden opacity-30">
            <div className="cyber-grid"></div>
            <div className="absolute inset-0 bg-gradient-to-t from-transparent to-[#05010a]"></div>

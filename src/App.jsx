@@ -4,7 +4,8 @@ const portfolioData = {
   name: "Rayan Luqman Hakim",
   role: "Informatics Engineering",
   githubUrl: "https://github.com/RayanHakim",
-  cvUrl: "./CV_Rayan_Luqman_Hakim.pdf",    
+  cvUrl: "./CV Rayan Luqman Hakim.pdf",    
+  portfolioUrl: "./Portfolio Rayan Luqman Hakim.pdf", // Link file portofolio
   
   about: "Mahasiswa Teknik Informatika dengan fokus pada Fullstack Development, Machine Learning (NLP), dan Quality Assurance. Berpengalaman mengembangkan aplikasi web, mobile, serta melakukan pengujian dan keamanan sistem melalui studi kasus nyata di instansi pemerintah. Memiliki minat dalam membangun solusi berbasis data dan meningkatkan kualitas serta keamanan perangkat lunak.",
 
@@ -63,6 +64,17 @@ const portfolioData = {
       company: "Universitas",
       duration: "2023 - 2024",
       desc: "Berperan dalam mengelola komunikasi dan penyebaran informasi antar panitia, mahasiswa baru, dan pihak eksternal. Bertanggungjawab menjaga citra positif kegiatan serta memastikan kelancaran hubungan dengan seluruh pihak eksternal."
+    }
+  ],
+
+  certifications: [
+    {
+      title: "Introduction to Cloud Computing",
+      issuer: "Digital Talent Scholarship 2025"
+    },
+    {
+      title: "Fundamental of Associate Network Administrator",
+      issuer: "Digital Talent Academy"
     }
   ],
 
@@ -130,7 +142,6 @@ const TechMarqueeRow = ({ category, items, reverse }) => {
         </h3>
       </div>
       
-      {/* Container dibuat sangat besar (h-32 sampai h-40) */}
       <div className="relative overflow-hidden flex items-center h-32 sm:h-40 w-full group">
         <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#080210] to-transparent z-10 pointer-events-none"></div>
         <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#080210] to-transparent z-10 pointer-events-none"></div>
@@ -215,19 +226,20 @@ const ExperienceCard = ({ experience }) => (
   <div className="relative ml-4 sm:ml-0 pl-10 sm:pl-16 py-8 border-l-4 border-[#450693] hover:border-[#FFC400] transition-colors duration-300 max-w-5xl mx-auto group">
     <div className="absolute left-[-14px] top-10 w-6 h-6 bg-[#0a0214] border-4 border-[#8C00FF] group-hover:border-[#FFC400] group-hover:bg-[#FFC400] group-hover:shadow-[0_0_15px_#FFC400] rounded-full transition-all duration-300"></div>
     
-    <div className="bg-[#0e041d] border-2 border-[#450693] p-8 sm:p-12 rounded-2xl group-hover:border-[#8C00FF] transition-colors">
-      <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 mb-6">
-        <div>
-          <h4 className="text-2xl sm:text-3xl font-bold text-white mb-2">
+    <div className="bg-[#0e041d] border-2 border-[#450693] p-6 sm:p-12 rounded-2xl group-hover:border-[#8C00FF] transition-colors">
+      {/* Diperbaiki: Menggunakan flex-wrap dan penyesuaian gap agar tanggal tidak overflow */}
+      <div className="flex flex-wrap lg:flex-row justify-between items-start lg:items-center gap-4 mb-6">
+        <div className="min-w-0 flex-1">
+          <h4 className="text-xl sm:text-3xl font-bold text-white mb-2 break-words">
             {experience.role}
           </h4>
-          <p className="text-[#8C00FF] font-mono text-base sm:text-lg tracking-wider">{experience.company}</p>
+          <p className="text-[#8C00FF] font-mono text-base sm:text-lg tracking-wider break-words">{experience.company}</p>
         </div>
-        <span className="font-mono text-[#FF3F7F] text-sm sm:text-base bg-[#450693]/20 px-4 py-2 rounded-lg border border-[#450693] whitespace-nowrap">
+        <span className="font-mono text-[#FF3F7F] text-xs sm:text-base bg-[#450693]/20 px-3 py-2 rounded-lg border border-[#450693] whitespace-normal sm:whitespace-nowrap inline-block">
           {experience.duration}
         </span>
       </div>
-      <p className="text-slate-400 font-light text-lg sm:text-xl leading-relaxed">
+      <p className="text-slate-400 font-light text-base sm:text-xl leading-relaxed">
         {experience.desc}
       </p>
     </div>
@@ -290,7 +302,7 @@ export default function App() {
             System.out.println("Hello World");
           </div>
           
-          <h1 className="text-5xl sm:text-7xl md:text-[6rem] lg:text-[7rem] font-black leading-none mb-6 text-white tracking-tight">
+          <h1 className="text-4xl sm:text-7xl md:text-[6rem] lg:text-[7rem] font-black leading-none mb-6 text-white tracking-tight">
             {portfolioData.name.split(' ')[0]} <br className="hidden sm:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8C00FF] via-[#FF3F7F] to-[#FFC400]">
               {portfolioData.name.split(' ').slice(1).join(' ')}
@@ -301,15 +313,14 @@ export default function App() {
             {'>'} {portfolioData.role}_
           </p>
 
-          {/* Deskripsi Tentang Saya Dikembalikan */}
-          <p className="text-base sm:text-lg text-slate-400 mb-12 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg text-slate-400 mb-12 max-w-3xl mx-auto leading-relaxed px-2">
             {portfolioData.about}
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-5 justify-center items-center mt-4">
+          <div className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-5 justify-center items-center mt-4">
             <a
               href="#projects"
-              className="w-full sm:w-auto px-10 py-5 bg-[#8C00FF] text-white font-bold rounded-xl hover:bg-[#FF3F7F] hover:shadow-[0_0_25px_rgba(255,63,127,0.5)] transition-all duration-300 uppercase text-sm tracking-widest"
+              className="w-full sm:w-auto px-10 py-5 bg-[#8C00FF] text-white font-bold rounded-xl hover:bg-[#FF3F7F] hover:shadow-[0_0_25px_rgba(255,63,127,0.5)] transition-all duration-300 uppercase text-xs sm:text-sm tracking-widest"
             >
               View Projects
             </a>
@@ -318,15 +329,24 @@ export default function App() {
               target="_blank"
               rel="noopener noreferrer"
               download 
-              className="w-full sm:w-auto px-10 py-5 bg-transparent text-white font-bold rounded-xl border-2 border-[#8C00FF] hover:bg-[#8C00FF]/10 transition-all duration-300 uppercase text-sm tracking-widest"
+              className="w-full sm:w-auto px-10 py-5 bg-transparent text-white font-bold rounded-xl border-2 border-[#8C00FF] hover:bg-[#8C00FF]/10 transition-all duration-300 uppercase text-xs sm:text-sm tracking-widest"
             >
               Download CV
+            </a>
+            <a
+              href={portfolioData.portfolioUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              download 
+              className="w-full sm:w-auto px-10 py-5 bg-transparent text-[#FF3F7F] font-bold rounded-xl border-2 border-[#FF3F7F] hover:bg-[#FF3F7F]/10 transition-all duration-300 uppercase text-xs sm:text-sm tracking-widest"
+            >
+              Download Portfolio
             </a>
             <a
               href={portfolioData.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto px-10 py-5 bg-[#0e041d] text-[#FFC400] font-bold rounded-xl border-2 border-[#450693] hover:border-[#FFC400] hover:text-[#FFC400] hover:bg-[#FFC400]/10 transition-all duration-300 uppercase text-sm tracking-widest flex items-center justify-center gap-3"
+              className="w-full sm:w-auto px-10 py-5 bg-[#0e041d] text-[#FFC400] font-bold rounded-xl border-2 border-[#450693] hover:border-[#FFC400] hover:text-[#FFC400] hover:bg-[#FFC400]/10 transition-all duration-300 uppercase text-xs sm:text-sm tracking-widest flex items-center justify-center gap-3"
             >
               <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
               GitHub
@@ -338,10 +358,9 @@ export default function App() {
       {/* --- CONTENT SECTION --- */}
       <div className="w-full relative z-20 pt-16 pb-20">
         
-        {/* TECH STACK SECTION (FULL SCREEN & MARQUEE) */}
+        {/* TECH STACK SECTION */}
         <section className="min-h-screen flex flex-col justify-center py-20 mb-12 relative">
           <div className="max-w-7xl mx-auto px-6 mb-16 text-center w-full">
-            {/* Judul Diperbaiki Menjadi Tech_Stack */}
             <h2 className="text-4xl sm:text-6xl font-black text-white uppercase tracking-tight mb-4">
               Tech<span className="text-[#8C00FF]">_Stack</span>
             </h2>
@@ -363,7 +382,7 @@ export default function App() {
         {/* PROJECTS */}
         <section id="projects" className="max-w-7xl mx-auto px-4 sm:px-6 mb-24">
           <div className="flex flex-col sm:flex-row items-center gap-6 mb-12 px-4 text-center sm:text-left">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight">
+            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight">
               Featured<span className="text-[#8C00FF]">_Works</span>
             </h2>
             <div className="h-1 flex-grow bg-gradient-to-r from-[#450693] to-transparent w-full sm:w-auto"></div>
@@ -372,10 +391,10 @@ export default function App() {
         </section>
 
         {/* EXPERIENCE */}
-        <section id="experience" className="max-w-7xl mx-auto px-4 sm:px-6 mb-16">
+        <section id="experience" className="max-w-7xl mx-auto px-4 sm:px-6 mb-24">
           <div className="flex flex-col sm:flex-row items-center gap-6 mb-16 px-4 text-center sm:text-left">
             <div className="hidden sm:block h-1 w-16 bg-[#8C00FF]"></div>
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight">
+            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight">
               Work<span className="text-[#FF3F7F]">_Experience</span>
             </h2>
             <div className="h-1 flex-grow bg-gradient-to-r from-[#450693] to-transparent w-full sm:w-auto"></div>
@@ -387,9 +406,32 @@ export default function App() {
           </div>
         </section>
 
+        {/* LICENSES & CERTIFICATIONS - Diperbaiki: Card dibuat full width (besar) */}
+        <section id="certifications" className="max-w-7xl mx-auto px-4 sm:px-6 mb-24">
+          <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mb-16 px-4 text-center sm:text-left">
+            <h2 className="text-2xl sm:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight break-words leading-tight">
+              Licenses<span className="text-[#FFC400]">_&_Certifications</span>
+            </h2>
+            <div className="h-1 flex-grow bg-gradient-to-r from-[#450693] to-transparent w-full sm:w-auto"></div>
+          </div>
+          {/* grid-cols-1 memastikan card tampil besar dan berderet ke bawah */}
+          <div className="grid grid-cols-1 gap-8 px-4 max-w-5xl mx-auto">
+            {portfolioData.certifications.map((cert, i) => (
+              <div key={i} className="bg-[#0e041d] border-2 border-[#450693] p-6 sm:p-10 rounded-2xl hover:border-[#FFC400] transition-all duration-300 group shadow-lg">
+                <h4 className="text-lg sm:text-3xl font-bold text-white mb-3 group-hover:text-[#FFC400] break-words">
+                  {cert.title}
+                </h4>
+                <p className="text-slate-400 font-mono text-sm sm:text-lg uppercase tracking-widest break-words">
+                  {'//'} {cert.issuer}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
       </div>
 
-      {/* --- FOOTER MODERN (CYBER GRID) --- */}
+      {/* --- FOOTER MODERN --- */}
       <footer className="relative bg-[#05010a] pt-32 pb-16 border-t-2 border-[#450693]/50 overflow-hidden z-30">
         <div className="absolute bottom-0 left-0 w-full h-[400px] overflow-hidden opacity-30">
            <div className="cyber-grid"></div>
@@ -397,28 +439,28 @@ export default function App() {
         </div>
         
         <div className="max-w-7xl mx-auto px-6 relative z-10 flex flex-col items-center text-center">
-          <h2 className="text-5xl sm:text-7xl lg:text-[6rem] font-black text-white mb-6 uppercase tracking-widest">
+          <h2 className="text-4xl sm:text-7xl lg:text-[6rem] font-black text-white mb-6 uppercase tracking-widest">
             Let's <span className="text-[#FFC400]">Connect</span>
           </h2>
-          <p className="text-slate-400 font-mono text-lg sm:text-xl mb-16">
+          <p className="text-slate-400 font-mono text-base sm:text-xl mb-16 px-4">
             Open for opportunities and collaborations.
           </p>
 
-          <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-8 sm:gap-12 mb-24">
-            <a href={portfolioData.githubUrl} target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-[#8C00FF] font-mono text-xl sm:text-2xl uppercase tracking-widest transition-colors hover:scale-110 transform">
+          <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-6 sm:gap-12 mb-24 px-4">
+            <a href={portfolioData.githubUrl} target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-[#8C00FF] font-mono text-lg sm:text-2xl uppercase tracking-widest transition-colors hover:scale-110 transform">
               [ GitHub ]
             </a>
-            <a href="https://www.linkedin.com/in/rayan-luqman-hakim-ab8a81379/" target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-[#FF3F7F] font-mono text-xl sm:text-2xl uppercase tracking-widest transition-colors hover:scale-110 transform">
+            <a href="https://www.linkedin.com/in/rayan-luqman-hakim-ab8a81379/" target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-[#FF3F7F] font-mono text-lg sm:text-2xl uppercase tracking-widest transition-colors hover:scale-110 transform">
               [ LinkedIn ]
             </a>
-            <a href="mailto:rayanluqmanhakim@gmail.com" className="text-slate-300 hover:text-[#FFC400] font-mono text-xl sm:text-2xl uppercase tracking-widest transition-colors hover:scale-110 transform">
+            <a href="mailto:rayanluqmanhakim@gmail.com" className="text-slate-300 hover:text-[#FFC400] font-mono text-lg sm:text-2xl uppercase tracking-widest transition-colors hover:scale-110 transform">
               [ Email ]
             </a>
           </div>
           
           <div className="w-full h-1 bg-gradient-to-r from-transparent via-[#450693] to-transparent mb-12"></div>
           
-          <p className="text-slate-500 font-mono text-sm sm:text-base uppercase tracking-widest">
+          <p className="text-slate-500 font-mono text-xs sm:text-base uppercase tracking-widest px-4">
             © 2026 {portfolioData.name} <br className="sm:hidden mt-4" />
             <span className="hidden sm:inline"> | </span> 
             Built with React & Tailwind

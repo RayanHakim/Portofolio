@@ -75,6 +75,10 @@ const portfolioData = {
     {
       title: "Fundamental of Associate Network Administrator",
       issuer: "Digital Talent Academy"
+    },
+    {
+      title: "Intermediate Associate Network Administrator",
+      issuer: "Digital Talent Academy"
     }
   ],
 
@@ -406,7 +410,7 @@ export default function App() {
           </div>
         </section>
 
-        {/* LICENSES & CERTIFICATIONS - Diperbaiki: Card dibuat full width (besar) */}
+        {/* LICENSES & CERTIFICATIONS  */}
         <section id="certifications" className="max-w-7xl mx-auto px-4 sm:px-6 mb-24">
           <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mb-16 px-4 text-center sm:text-left">
             <h2 className="text-2xl sm:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight break-words leading-tight">
@@ -414,7 +418,7 @@ export default function App() {
             </h2>
             <div className="h-1 flex-grow bg-gradient-to-r from-[#450693] to-transparent w-full sm:w-auto"></div>
           </div>
-          {/* grid-cols-1 memastikan card tampil besar dan berderet ke bawah */}
+          {/*  */}
           <div className="grid grid-cols-1 gap-8 px-4 max-w-5xl mx-auto">
             {portfolioData.certifications.map((cert, i) => (
               <div key={i} className="bg-[#0e041d] border-2 border-[#450693] p-6 sm:p-10 rounded-2xl hover:border-[#FFC400] transition-all duration-300 group shadow-lg">

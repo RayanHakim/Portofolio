@@ -79,6 +79,10 @@ const portfolioData = {
     {
       title: "Intermediate Associate Network Administrator",
       issuer: "Digital Talent Academy"
+    },
+      {
+      title: "Google AI Essentials Specialization",
+      issuer: "Google"
     }
   ],
 

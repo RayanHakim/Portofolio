@@ -83,6 +83,10 @@ const portfolioData = {
       {
       title: "Google AI Essentials Specialization",
       issuer: "Google"
+    },
+     {
+      title: "Intro to Machine Learning",
+      issuer: "Kaggle"
     }
   ],
 

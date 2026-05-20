@@ -70,7 +70,7 @@ const portfolioData = {
   certifications: [
     {
       title: "Introduction to Cloud Computing",
-      issuer: "Digital Talent Scholarship 2025"
+      issuer: "Digital Talent Academy"
     },
     {
       title: "Fundamental of Associate Network Administrator",
@@ -82,11 +82,15 @@ const portfolioData = {
     },
       {
       title: "Google AI Essentials Specialization",
-      issuer: "Google"
+      issuer: "Coursera"
     },
      {
       title: "Intro to Machine Learning",
       issuer: "Kaggle"
+    },
+     {
+      title: "Intermediate Cybersecurity + AI Essentials - Google - Nasional",
+      issuer: "Digital Talent Academy"
     }
   ],
 

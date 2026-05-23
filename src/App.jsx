@@ -91,6 +91,10 @@ const portfolioData = {
      {
       title: "Intermediate Cybersecurity + AI Essentials - Google - Nasional",
       issuer: "Digital Talent Academy"
+    },
+    {
+      title: "Web Development Fundamental",
+      issuer: "IBM"
     }
   ],
 
